@@ -41,7 +41,9 @@
                     <thead>
                         <tr class="table-active table-light border border-dark" style="color:red">
                             <th>Student No.</th>
-                            <th>Student Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
                             <th>Program</th>
                             <th>Email</th>
                             <th>Password</th>
@@ -54,8 +56,10 @@
                         foreach ($content as $list) {
                         ?>
                             <tr>
-                                <td class="border-bottom"><?= $list['student_no'] ?></td>
-                                <td class="border-bottom"><?= $list['name']  ?></td>
+                                <td class="border-bottom"><?= $list['student_number'] ?></td>
+                                <td class="border-bottom"><?= $list['first_name']  ?></td>
+                                <td class="border-bottom"><?= $list['middle_name']  ?></td>
+                                <td class="border-bottom"><?= $list['last_name']  ?></td>
                                 <td class="border-bottom"><?= $list['program']  ?></td>
                                 <td class="border-bottom"><?= $list['email']  ?></td>
                                 <td class="border-bottom"><?= $list['password']  ?></td>

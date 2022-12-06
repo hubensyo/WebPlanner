@@ -43,8 +43,10 @@ class Welcome extends CI_Controller
 
 	public function update($id)
 	{
-		$data['student_no'] = $this->input->post('student_no');
-		$data['name'] = $this->input->post('name');
+		$data['student_number'] = $this->input->post('student_number');
+		$data['first_name'] = $this->input->post('first_name');
+		$data['middle_name'] = $this->input->post('middle_name');
+		$data['last_name'] = $this->input->post('last_name');
 		$data['program'] = $this->input->post('program');
 		$data['email'] = $this->input->post('email');
 		$data['password'] = $this->input->post('password');
@@ -54,8 +56,10 @@ class Welcome extends CI_Controller
 
 	public function add()
 	{
-		$data['student_no'] = $this->input->post('student_no');
-		$data['name'] = $this->input->post('name');
+		$data['student_number'] = $this->input->post('student_number');
+		$data['first_name'] = $this->input->post('first_name');
+		$data['middle_name'] = $this->input->post('middle_name');
+		$data['last_name'] = $this->input->post('last_name');
 		$data['program'] = $this->input->post('program');
 		$data['email'] = $this->input->post('email');
 		$data['password'] = $this->input->post('password');
