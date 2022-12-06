@@ -24,6 +24,51 @@
 
 </head>
 
+<style>
+    .navbar-vertical .navbar-nav>.nav-item .nav-link.active {
+        background-color: #9a1a21 !important;
+    }
+
+    .bg-gradient-primary {
+        background-color: #9a1a21 !important;
+    }
+
+    .bg-gradient-primary {
+        background-image: linear-gradient(195deg, #9a1a21 0%, #9a1a21 100%);
+    }
+
+    .table> :not(:last-child)> :last-child>* {
+        color: #9a1a21 !important;
+    }
+
+    .btn-primary {
+        background-color: #9a1a21 !important;
+    }
+
+    .btn-info,
+    .btn.bg-gradient-info {
+        color: #f8f9fa;
+        background-color: #9a1a21 !important;
+    }
+
+    .btn-info {
+        --bs-btn-color: #f8f9fa !important;
+        --bs-btn-bg: #0dcaf0;
+        --bs-btn-border-color: #0dcaf0;
+        --bs-btn-hover-color: #000;
+        --bs-btn-hover-bg: #31d2f2;
+        --bs-btn-hover-border-color: #25cff2;
+        --bs-btn-focus-shadow-rgb: 11, 172, 204;
+        --bs-btn-active-color: #000;
+        --bs-btn-active-bg: #3dd5f3;
+        --bs-btn-active-border-color: #25cff2;
+        --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #000;
+        --bs-btn-disabled-bg: #0dcaf0;
+        --bs-btn-disabled-border-color: #0dcaf0;
+    }
+</style>
+
 <?php
 if (!empty($this->session->flashdata('success'))) {
     echo "
@@ -32,4 +77,5 @@ if (!empty($this->session->flashdata('success'))) {
     </script>
     ";
 }
+
 ?>
