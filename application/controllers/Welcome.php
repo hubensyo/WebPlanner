@@ -34,14 +34,14 @@ class Welcome extends CI_Controller
 	}
 
 	// dashboard section
-	public function index()
+	public function student_dashboard()
 	{
 		$data['body'] = 'body/dashboard';
-		$data['content'] = $this->SPModel->test();
+		$data['content'] = $this->SPModel->student_dashboard();
 		$this->load->view('layout/template', $data);
 	}
 
-	public function update($id)
+	public function update_students($id)
 	{
 		$data['student_number'] = $this->input->post('student_number');
 		$data['first_name'] = $this->input->post('first_name');
@@ -50,11 +50,11 @@ class Welcome extends CI_Controller
 		$data['program'] = $this->input->post('program');
 		$data['email'] = $this->input->post('email');
 		$data['password'] = $this->input->post('password');
-		$this->SPModel->edit($id, $data);
-		redirect('welcome/index');
+		$this->SPModel->edit_students($id, $data);
+		redirect('welcome/student_dashboard');
 	}
 
-	public function add()
+	public function add_students()
 	{
 		$data['student_number'] = $this->input->post('student_number');
 		$data['first_name'] = $this->input->post('first_name');
@@ -64,30 +64,30 @@ class Welcome extends CI_Controller
 		$data['email'] = $this->input->post('email');
 		$data['password'] = $this->input->post('password');
 		$data['valid'] = 1;
-		$this->SPModel->insert($data);
-		redirect('welcome/index');
+		$this->SPModel->insert_students($data);
+		redirect('welcome/student_dashboard');
 	}
 
 	// admin section
 	public function admin()
 	{
 		$data['body'] = 'body/admin';
-		$data['admin'] = $this->SPModel->test1();
+		$data['admin'] = $this->SPModel->admin_dashboard();
 		$this->load->view('layout/template', $data);
 	}
 
-	public function update1($id)
+	public function update_admin($id)
 	{
 		$data['name'] = $this->input->post('name');
 		$data['program'] = $this->input->post('program');
 		$data['email'] = $this->input->post('email');
 		$data['password'] = $this->input->post('password');
 		$data['position'] = $this->input->post('position');
-		$this->SPModel->edit1($id, $data);
+		$this->SPModel->edit_admin($id, $data);
 		redirect('welcome/admin');
 	}
 
-	public function add1()
+	public function add_admin()
 	{
 		$data['name'] = $this->input->post('name');
 		$data['program'] = $this->input->post('program');
@@ -95,7 +95,7 @@ class Welcome extends CI_Controller
 		$data['password'] = $this->input->post('password');
 		$data['position'] = $this->input->post('position');
 		$data['valid'] = 1;
-		$this->SPModel->insert1($data);
+		$this->SPModel->insert_admin($data);
 		redirect('welcome/admin');
 	}
 
@@ -126,21 +126,21 @@ class Welcome extends CI_Controller
 	public function calendar()
 	{
 		$data['body'] = 'body/calendar';
-		$data['content'] = $this->SPModel->test2();
+		$data['content'] = $this->SPModel->calendar_view();
 		$this->load->view('layout/template', $data);
 	}
 
-	public function update2($id)
-	{
-		// $data['title'] = $this->input->post('title');
-		// $data['description'] = $this->input->post('description');
-		// $data['date_start'] = $this->input->post('date_start');
-		// $data['date_finish'] = $this->input->post('date_finish');
-		// $this->SPModel->edit2($id, $data);
-		redirect('welcome/calendar');
-	}
+	// public function update2($id)
+	// {
+	// 	// $data['title'] = $this->input->post('title');
+	// 	// $data['description'] = $this->input->post('description');
+	// 	// $data['date_start'] = $this->input->post('date_start');
+	// 	// $data['date_finish'] = $this->input->post('date_finish');
+	// 	// $this->SPModel->edit2($id, $data);
+	// 	redirect('welcome/calendar');
+	// }
 
-	public function add2()
+	public function add_CalendarEvent()
 	{
 		$eventID = $this->input->post('eventID');
 		if (empty($eventID)) {
@@ -148,13 +148,13 @@ class Welcome extends CI_Controller
 			$data['description'] = $this->input->post('description');
 			$data['datetime_start'] =  $this->input->post('date_start');
 			$data['datetime_finish'] = $this->input->post('date_finish');
-			$this->SPModel->insert2($data);
+			$this->SPModel->insert_calendar($data);
 		} else {
 			$data['title'] = $this->input->post('title');
 			$data['description'] = $this->input->post('description');
 			$data['datetime_start'] = $this->input->post('date_start');
 			$data['datetime_finish'] = $this->input->post('date_finish');
-			$this->SPModel->edit2($eventID, $data);
+			$this->SPModel->edit_calendar($eventID, $data);
 		}
 		redirect('welcome/calendar');
 	}
@@ -167,7 +167,7 @@ class Welcome extends CI_Controller
 			$data['description'] = $this->input->post('description');
 			$data['datetime_start'] =  str_replace('T',' ',$this->input->post('date_start'));
 			$data['datetime_finish'] = str_replace('T',' ',$this->input->post('date_finish'));
-			$this->SPModel->edit2($eventID, $data);
+			$this->SPModel->edit_calendar($eventID, $data);
 			echo json_encode($data);
 			
 		}
@@ -218,7 +218,7 @@ class Welcome extends CI_Controller
 	{
 		$id = $param;
 		$data['valid'] = 0;
-		$response = $this->SPModel->edit3($id, $data);
+		$response = $this->SPModel->delete_event($id, $data);
 		echo json_encode($response);
 		redirect('welcome/calendar');
 	}

@@ -3,7 +3,7 @@
 class SPModel extends CI_Model
 {
     //students
-    function test()
+    function student_dashboard()
     {
         $this->db->where('valid', 1);
         $query = $this->db->get('dominicanplanner_account');
@@ -17,52 +17,52 @@ class SPModel extends CI_Model
         return $query->result_array();
     }
 
-    function edit($id, $data)
+    function edit_students($id, $data)
     {
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         $this->db->update('dominicanplanner_account', $data);
     }
 
-    function insert($data)
+    function insert_students($data)
     {
         $this->db->insert('dominicanplanner_account', $data);
     }
 
     //admin
-    function test1()
+    function admin_dashboard()
     {
         $this->db->where('valid', 1);
         $query = $this->db->get('dominicanplanner_admin');
         return $query->result_array();
     }
 
-    function edit1($id, $data)
+    function edit_admin($id, $data)
     {
         $this->db->where('ID_Admin', $id);
         $this->db->update('dominicanplanner_admin', $data);
     }
 
-    function insert1($data)
+    function insert_admin($data)
     {
         $this->db->insert('dominicanplanner_admin', $data);
     }
 
     //calendar
 
-    function test2()
+    function calendar_view()
     {
         $this->db->where('valid', 1);
         $query = $this->db->get('dominicanplanner_calendar');
         return $query->result_array();
     }
 
-    function edit2($id, $data)
+    function edit_calendar($id, $data)
     {
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         $this->db->update('dominicanplanner_calendar', $data);
     }
 
-    function insert2($data)
+    function insert_calendar($data)
     {
         $this->db->insert('dominicanplanner_calendar', $data);
     }
@@ -129,7 +129,7 @@ class SPModel extends CI_Model
     }
 
     //delete event
-    function edit3($id, $data)
+    function delete_event($id, $data)
     {
         $this->db->where('ID', $id);
         $this->db->update('dominicanplanner_calendar', $data);

@@ -63,13 +63,13 @@ class Login extends CI_Controller
 				echo 'Success Login';
 				$this->session->set_flashdata('success', 'Instructor Mode');
 				$this->setsession($logindata);
-				redirect("welcome/index");
+				redirect("welcome/student_dashboard");
 			} else {
 				// admin tab enabled
 				echo 'Success Login';
 				$this->session->set_flashdata('success', 'Admin Mode');
 				$this->setsession($logindata);
-				redirect("welcome/index");
+				redirect("welcome/student_dashboard");
 			}
 		} else {
 			echo 'Not Login';

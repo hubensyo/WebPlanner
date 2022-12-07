@@ -13,10 +13,14 @@
                                 <div class="card-body">
                                     <div class="card-body">
                                         <h2 class="w3-text-black">Add Students</h2>
-                                        <form action="<?= base_url('index.php/welcome/add'); ?>" method="post">
-                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="student_no" placeholder="Student No." required></div>
+                                        <form action="<?= base_url('index.php/welcome/add_students'); ?>" method="post">
+                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="student_number" placeholder="Student No." required></div>
                                             <br>
-                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="name" placeholder="Name" required></div>
+                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="first_name" placeholder="First Name" required></div>
+                                            <br>
+                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="middle_name" placeholder="Middle Name" required></div>
+                                            <br>
+                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="last_name" placeholder="Last Name" required></div>
                                             <br>
                                             <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="program" placeholder="Program" required></div>
                                             <br>
@@ -70,12 +74,12 @@
 
                                 <!-- edit section -->
                                 <!-- Button trigger modal -->
-                                <td class="border-bottom"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?= $list['ID'] ?>">
+                                <td class="border-bottom"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?= $list['id'] ?>">
                                         Edit
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="editModal<?= $list['ID'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="editModal<?= $list['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -83,12 +87,18 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="<?= base_url('index.php/welcome/update/' . $list['ID']); ?>" method="post">
+                                                    <form action="<?= base_url('index.php/welcome/update_students/' . $list['id']); ?>" method="post">
                                                         <div style="color: black">Student No.</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="student_no" placeholder="Student No." value="<?= $list['student_no'] ?>" required></div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="student_number" placeholder="Student No." value="<?= $list['student_number'] ?>" required></div>
 
-                                                        <div style="color: black">Name</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="name" placeholder="Name" value="<?= $list['name'] ?>" required></div>
+                                                        <div style="color: black">First Name</div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="first_name" placeholder="Name" value="<?= $list['first_name'] ?>" required></div>
+
+                                                        <div style="color: black">Middle Name</div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="middle_name" placeholder="Name" value="<?= $list['middle_name'] ?>" required></div>
+
+                                                        <div style="color: black">Last Name</div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="last_name" placeholder="Name" value="<?= $list['last_name'] ?>" required></div>
 
                                                         <div style="color: black">Program</div>
                                                         <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="program" placeholder="Program" value="<?= $list['program'] ?>" required></div>

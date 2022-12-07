@@ -13,7 +13,7 @@
                                 <div class="card-body">
                                     <div class="card-body">
                                         <h2 class="w3-text-black">Add Instructor</h2>
-                                        <form action="<?= base_url('index.php/welcome/add1'); ?>" method="post">
+                                        <form action="<?= base_url('index.php/welcome/add_admin'); ?>" method="post">
                                             <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="name" placeholder="Name" required></div>
                                             <br>
                                             <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="program" placeholder="Program" required></div>
@@ -82,7 +82,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="<?= base_url('index.php/welcome/update1/' . $list['ID_Admin']); ?>" method="post">
+                                                    <form action="<?= base_url('index.php/welcome/update_admin/' . $list['ID_Admin']); ?>" method="post">
                                                         <div style="color: black">Name</div>
                                                         <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="name" placeholder="Name" value="<?= $list['name'] ?>" required></div>
 

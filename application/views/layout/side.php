@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white active" href="http://10.0.3.36/tims/index.php/welcome/index" id="studentlist_side" onclick="clicksidenav(this.id)">
+                <a class="nav-link text-white active" href="http://10.0.3.36/tims/index.php/welcome/student_dashboard" id="studentlist_side" onclick="clicksidenav(this.id)">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>

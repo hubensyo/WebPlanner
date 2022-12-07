@@ -200,7 +200,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
-                            <form action="<?= base_url('index.php/welcome/add2'); ?>" method="post" id="schedule-form">
+                            <form action="<?= base_url('index.php/welcome/add_CalendarEvent'); ?>" method="post" id="schedule-form">
                                 <input type="hidden" value="" name="eventID" id="eventID">
                                 <div class="form-group mb-2">
                                     <label for="title" class="control-label">Events</label>
