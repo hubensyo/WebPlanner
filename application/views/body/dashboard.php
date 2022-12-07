@@ -53,6 +53,7 @@
                             <th>Password</th>
                             <th>To-Do List</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,25 +70,27 @@
                                 <td class="border-bottom"><?= $list['password']  ?></td>
 
                                 <!-- view to-do section -->
-                                <td class="border-bottom"><a href="<?= base_url('index.php/welcome/todo'); ?>" class="btn btn-info">View</a></td>
+                                <td class="border-bottom"><a href="<?= base_url('index.php/welcome/todo/'. $list['student_number']);  ?>" class="btn btn-info">View</a></td>
 
 
                                 <!-- edit section -->
                                 <!-- Button trigger modal -->
-                                <td class="border-bottom"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?= $list['id'] ?>">
+                                <td class="border-bottom"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?= $list['student_number'] ?>">
                                         Edit
                                     </button>
 
+
                                     <!-- Modal -->
-                                    <div class="modal fade" id="editModal<?= $list['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="editModal<?= $list['student_number'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h2 class="modal-title" id="exampleModalLabel" style="color: black">Edit Student</h2>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
+                                                <input type="hidden" value=<?= $list['student_number'] ?> name="studentModalID" id="studentModalID">
                                                 <div class="modal-body">
-                                                    <form action="<?= base_url('index.php/welcome/update_students/' . $list['id']); ?>" method="post">
+                                                    <form action="<?= base_url('index.php/welcome/update_students/' . $list['student_number']); ?>" method="post">
                                                         <div style="color: black">Student No.</div>
                                                         <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="student_number" placeholder="Student No." value="<?= $list['student_number'] ?>" required></div>
 
@@ -118,6 +121,7 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td class="border-bottom"><a class="btn btn-info" onclick="clickDelete('<?= $list['student_number']; ?>')">Delete</a></td>
                             </tr>
                         <?php
                         }
@@ -134,4 +138,12 @@
     });
 
     clickstudentlist()
+
+    function clickDelete($id) {
+        
+        var _conf = confirm("Are you sure to deletet?");
+        if (_conf === true) {
+            location.href = "<?= base_url('index.php/welcome/delete/'); ?>" + $id 
+        }
+    }
 </script>

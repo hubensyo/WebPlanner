@@ -2,8 +2,10 @@
 class TDModel extends CI_Model
 {
 
-    function fetch_all()
+    function fetch_all($stdnum)
     {
+        $this->db->where('valid', 1);
+        $this->db->where('student_number', $stdnum);
         $this->db->order_by('id', 'DESC');
         return $this->db->get('dominicanplanner_todo');
     }
@@ -11,8 +13,8 @@ class TDModel extends CI_Model
     function task($stdnum){
         $this->db->where('student_number', $stdnum);
         $this->db->order_by('id', 'DESC');
-        return $this->db->get('dominicanplanner_todo');
-        // return $query->result_array();
+        $query = $this->db->get('dominicanplanner_todo');
+        return $query->result_array();
     }
 
     function edit($task_id){

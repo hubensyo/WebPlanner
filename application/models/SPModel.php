@@ -10,16 +10,24 @@ class SPModel extends CI_Model
         return $query->result_array();
     }
 
-    function todoview()
+    function todoview($studnum)
     {
         $this->db->where('valid', 1);
+        $this->db->where('student_number', $studnum);
         $query = $this->db->get('dominicanplanner_todo');
         return $query->result_array();
     }
 
-    function edit_students($id, $data)
+    function edit_todo($id, $data)
     {
         $this->db->where('id', $id);
+        $this->db->update('dominicanplanner_todo', $data);
+    }
+
+
+    function edit_students($student_number, $data)
+    {
+        $this->db->where('student_number', $student_number);
         $this->db->update('dominicanplanner_account', $data);
     }
 
@@ -47,6 +55,10 @@ class SPModel extends CI_Model
         $this->db->insert('dominicanplanner_admin', $data);
     }
 
+    function insert_task($data)
+    {
+        $this->db->insert('dominicanplanner_todo', $data);
+    }
     //calendar
 
     function calendar_view()

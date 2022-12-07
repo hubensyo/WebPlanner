@@ -26,6 +26,8 @@ class Welcome extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->model('SPModel');
+		$this->load->model('TDModel');
+		$this->load->model('api_model');
 		$this->load->library('session');
 		$this->session->userdata('login')['ID_Admin'];
 		if (empty($this->session->userdata('login')['ID_Admin'])) {
@@ -41,7 +43,7 @@ class Welcome extends CI_Controller
 		$this->load->view('layout/template', $data);
 	}
 
-	public function update_students($id)
+	public function update_students($student_number)
 	{
 		$data['student_number'] = $this->input->post('student_number');
 		$data['first_name'] = $this->input->post('first_name');
@@ -50,7 +52,9 @@ class Welcome extends CI_Controller
 		$data['program'] = $this->input->post('program');
 		$data['email'] = $this->input->post('email');
 		$data['password'] = $this->input->post('password');
-		$this->SPModel->edit_students($id, $data);
+		$this->SPModel->edit_students($student_number, $data);
+		// print_r($data);
+		// die;
 		redirect('welcome/student_dashboard');
 	}
 
@@ -99,6 +103,19 @@ class Welcome extends CI_Controller
 		redirect('welcome/admin');
 	}
 
+	public function add_task()
+	{
+		$data['task'] = $this->input->post('task');
+		$data['student_number'] = $this->input->post('student_number');
+		$data['date_start'] = $this->input->post('date_start');
+		$data['date_end'] = $this->input->post('date_end');
+		$data['due_time'] = $this->input->post('due_time');
+		$data['status'] = 1;
+		$data['valid'] = 1;
+		$this->SPModel->insert_task($data);
+		redirect('welcome/todo/' . $data['student_number']);
+	}
+
 	public function getsession()
 	{
 		$data['position'] = $this->session->setsession();
@@ -107,19 +124,66 @@ class Welcome extends CI_Controller
 
 
 	//to do list section
-	public function todo()
+	public function todo($param = '')
 	{
+		$studnum = $param;
+		$data['student_number'] = $studnum;
 		$data['body'] = 'body/webtodo_view';
-		$data['todolist'] = $this->SPModel->todoview();
+		$data['todolist'] = $this->SPModel->todoview($studnum);
+		// print_r($studnum);
 		$this->load->view('layout/template', $data);
+	}
+
+	public function todo_update($id)
+	{
+		$data['task'] = $this->input->post('task');
+		$data['student_number'] = $this->input->post('student_number');
+		$data['date_start'] = $this->input->post('date_start');
+		$data['date_end'] = $this->input->post('date_end');
+		$data['due_time'] = $this->input->post('due_time');
+		$data['status'] = 1;
+		$this->SPModel->edit_todo($id, $data);
+		// echo json_encode($data);
+		redirect('welcome/todo/' . $data['student_number']);
 	}
 
 	public function back()
 	{
 		$data['body'] = 'body/dashboard';
-		$data['content'] = $this->SPModel->test();
+		$data['content'] = $this->SPModel->student_dashboard();
 		$this->load->view('layout/template', $data);
 	}
+
+	public function delete($param = "")
+	{
+		$student_number = $param;
+		$data = array(
+			'valid' => 0
+		);
+		$this->SPModel->edit_students($student_number, $data);
+		redirect('welcome/student_dashboard');
+	}
+
+	public function delete_admin($param = "")
+	{
+		$name = $param;
+		$data = array(
+			'valid' => 0
+		);
+		$this->SPModel->edit_admin($name, $data);
+		redirect('welcome/admin');
+	}
+
+	public function delete_todo($param = "")
+	{
+		$name = $param;
+		$data = array(
+			'valid' => 0
+		);
+		$this->SPModel->edit_todo($name, $data);
+		redirect('welcome/todo');
+	}
+
 
 
 	//calendar section
@@ -229,4 +293,242 @@ class Welcome extends CI_Controller
 		$delEvent = $this->SPModel->fetchEventInfo($data['ID']);
 		echo json_encode($delEvent);
 	}
+
+// need adam for future
+// todo api
+// function index()
+//     {
+//         $data = array(
+//             'student_number'    =>  $this->input->post('student_number')
+//         );
+//         $data = $this->TDModel->fetch_all($data);
+//         echo json_encode($data->result_array());
+//     }
+
+//     function todo()
+//     {
+//         $stdnum = $this->input->post('student_number');
+//         $data = $this->TDModel->task($stdnum);
+
+
+//         if (isset($stdnum)){
+//             if (!empty($data)){
+//                 echo json_encode(['tasks'=>$data->result_array(), 'success'=> "1", 'message'=> "success"]);
+//             }
+//             else{
+//                 $data['success'] = "0";
+//                 $data['message'] = "error";
+//                 echo json_encode(['tasks'=>$data->result_array()]);
+//             }
+//         }
+//         else{
+//             echo "null";
+//         }
+        
+        
+//     }
+
+//     function insert()
+//     {
+//         $data = array(
+//             'task'    =>  $this->input->post('task'),
+//             'student_number'     =>  $this->input->post('student_number'),
+//             'date_start'     =>  $this->input->post('date_start'),
+//             'date_end'     =>  $this->input->post('date_end'),
+//             'due_time'     =>  $this->input->post('due_time'),
+//             'status'     =>  $this->input->post('status')
+//         );
+
+//         $this->TDModel->insert_api($data);
+
+//         echo json_encode($data);
+//     }
+
+//     function update()
+//     {
+//         $data = array(
+//             'task'    =>  $this->input->post('task'),
+//             'student_number'     =>  $this->input->post('student_number'),
+//             'date_start'     =>  $this->input->post('date_start'),
+//             'date_end'     =>  $this->input->post('date_end'),
+//             'due_time'     =>  $this->input->post('due_time')
+//         );
+
+//         $task_id = $this->input->post('id');
+//         $stdnum = $this->input->post('student_number');
+
+//         $this->TDModel->update_api($task_id, $stdnum, $data);
+//         $array = array(
+//             'success'  => true
+//         );
+//         echo json_encode($array);
+//     }
+
+//     function fetch_single()
+//     {
+//         if ($this->input->post('id')) {
+//             $data = $this->TDModel->fetch_single_user($this->input->post('id'));
+//             foreach ($data as $row) {
+//                 $output['task'] = $row['task'];
+//                 $output['student_number'] = $row['student_number'];
+//                 $output['date_start'] = $row['date_start'];
+//                 $output['date_end'] = $row['date_end'];
+//                 $output['due_time'] = $row['due_time'];
+//                 $output['status'] = $row['status'];
+//             }
+//             echo json_encode($output);
+//         }
+//     }
+
+//     function fetch_item(){
+//         $task_id = $this->input->post('id');
+//         $data = $this->TDModel->edit($task_id);
+
+//         if (isset($task_id)){
+//             if (!empty($data)){
+//                 echo json_encode(['edit'=>$data->row_array(), 'success'=> "1", 'message'=> "success"]);
+//             }
+//             else{
+//                 $data['success'] = "0";
+//                 $data['message'] = "error";
+//                 echo json_encode(['edit'=>$data->row_array()]);
+//             }
+//         }
+//         else{
+//             echo "null";
+//         }
+
+//     }
+
+//     function delete()
+//     {
+//         if ($this->input->post('id')) {
+//             if ($this->TDModel->delete_single_task($this->input->post('id'))) {
+//                 $array = array(
+//                     'success' => true
+//                 );
+//             } else {
+//                 $array = array(
+//                     'error' => true
+//                 );
+//             }
+//             echo json_encode($array);
+//         }
+//     }
+
+//account api
+// function index(){
+// 	$data = $this->api_model->fetch_all();
+// 	echo json_encode($data->result_array());
+	
+// }
+
+// function insert(){
+// 	$data = array(
+// 		'student_number'     =>  $this->input->post('student_number'),
+// 		'first_name'    =>  $this->input->post('first_name'),
+// 		'last_name'    =>  $this->input->post('last_name'),
+// 		'program'     =>  $this->input->post('program'),
+// 		'email'     =>  $this->input->post('email'),
+// 		'password'     =>  $this->input->post('password')
+// 	);
+
+// 	$this->api_model->insert_api($data);
+	
+// 	$output = array(
+// 		'success'       =>  true
+// 	);
+
+// 	echo json_encode($data);
+// }
+
+// function fetch_single()
+// {
+// 	if($this->input->post('id')){
+// 		$data = $this->api_model->fetch_single_user($this->input->post('id'));
+// 		foreach($data as $row){
+// 			$output['student_number'] = $row['student_number'];
+// 			$output['first_name'] = $row['first_name'];
+// 			$output['last_name'] = $row['last_name'];
+// 			$output['program'] = $row['program'];
+// 			$output['email'] = $row['email'];
+// 			$output['password'] = $row['password'];
+// 		}
+// 		echo json_encode($output);
+// 	}
+// }
+
+// function update(){
+// 	$data = array(
+// 		'student_number'     =>  $this->input->post('student_number'),
+// 		'first_name'    =>  $this->input->post('first_name'),
+// 		'last_name'    =>  $this->input->post('last_name'),
+// 		'program'     =>  $this->input->post('program'),
+// 		'email'     =>  $this->input->post('email'),
+// 		'password'     =>  $this->input->post('password')
+// 	);
+
+// 	$this->api_model->update_api($this->input->post('id'), $data);
+// 	$array = array(
+// 		'success'  => true
+// 	);
+
+// 	echo json_encode($array, true);
+// }
+
+// function delete(){
+// 	if($this->input->post('id')){
+// 		if($this->api_model->delete_single_user($this->input->post('id'))){
+// 			$array = array(
+// 			'success' => true
+// 		);}
+// 		else{
+// 			$array = array(
+// 			'error' => true
+// 		);}
+// 	echo json_encode($array);
+// 	}
+// }
+
+// function authentication(){
+// 	$stdnum = $this->input->post('student_number');
+// 	$password = $this->input->post('password');
+// 	$response = $this->api_model->login($stdnum);
+// 	// echo $password;
+// 	// echo $stdnum;
+// 	// echo $password;
+// 	// echo $response['password'];
+	
+// 	$result = array();
+// 	$result['login'] = array();
+			
+// 	if (isset($stdnum, $password)){
+
+// 		if ($password === $response['password']){
+			
+// 			$index['id'] = $response['id'];
+// 			$index['student_number'] = $response['student_number'];
+// 			$index['first_name'] = $response['first_name'];
+// 			$index['last_name'] = $response['last_name'];
+// 			$index['program'] = $response['program'];
+// 			$index['email'] = $response['email'];
+
+// 			array_push($result['login'], $index);
+
+// 			$result['success'] = "1";
+// 			$result['message'] = "success";
+// 			echo json_encode($result);                
+			
+// 			}
+// 		else{
+// 				$result['success'] = "0";
+// 				$result['message'] = "error";
+// 				echo json_encode($result);
+// 			}
+// 	}
+// 	else{
+// 		echo "null";
+// 	}
+
+// }
 }
