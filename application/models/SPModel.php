@@ -18,6 +18,13 @@ class SPModel extends CI_Model
         return $query->result_array();
     }
 
+    function todo_allview()
+    {
+        $this->db->where('valid', 1);
+        $query = $this->db->get('dominicanplanner_todo');
+        return $query->result_array();
+    }
+
     function edit_todo($id, $data)
     {
         $this->db->where('id', $id);

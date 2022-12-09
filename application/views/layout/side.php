@@ -9,12 +9,31 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link text-white" href="http://10.0.3.36/tims/index.php/welcome/calendar" id="calendar_side" onclick="clicksidenav(this.id)">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">calendar_today</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Calendar</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link text-white active" href="http://10.0.3.36/tims/index.php/welcome/student_dashboard" id="studentlist_side" onclick="clicksidenav(this.id)">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
                     <span class="nav-link-text ms-1">Student List</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link text-white" href="http://10.0.3.36/tims/index.php/welcome/todo_all" id="todo_side" onclick="clicksidenav(this.id)">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">check</i>
+                    </div>
+                    <span class="nav-link-text ms-1">To-Do List</span>
                 </a>
             </li>
 
@@ -37,14 +56,7 @@
             <?php
             }
             ?>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="http://10.0.3.36/tims/index.php/welcome/calendar" id="calendar_side" onclick="clicksidenav(this.id)">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">calendar_today</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Calendar</span>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link text-white " href="http://10.0.3.36/tims/index.php/login/logout" id="clicklogout" onclick="clicksidenav(this.id)">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -74,6 +86,10 @@
 
         function clickcalendar() {
             clicksidenav("calendar_side")
+        }
+
+        function clicktodo() {
+            clicksidenav("todo_side")
         }
 
         function clicklogout() {

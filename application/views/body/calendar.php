@@ -155,6 +155,12 @@
             border-color: #dc3545;
         }
 
+        .fc-h-event .fc-event-main-frame {
+            color: #fff;
+            background-color: #9a1a21;
+            border-color: #000;
+        }
+
         .btn-danger {
             --bs-btn-color: #000;
             --bs-btn-bg: #f9ce34 !important;
@@ -176,7 +182,14 @@
         .fc .fc-list-table td {
             padding: 8px 14px;
         }
-        
+
+        .fc-direction-ltr .fc-daygrid-event.fc-event-start,
+        .fc-direction-rtl .fc-daygrid-event.fc-event-end {
+            color: #fff;
+            background-color: #9a1a21;
+            border-color: #000;
+        }
+
     </style>
 
 </head>
