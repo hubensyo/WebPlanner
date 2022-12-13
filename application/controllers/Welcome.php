@@ -274,8 +274,8 @@ class Welcome extends CI_Controller
 
 	public function fetchEvents()
 	{
-		$getTodo = $this->SPModel->getTodo();
-		echo json_encode($getTodo);
+		$getEvents = $this->SPModel->getEvents();
+		echo json_encode($getEvents);
 	}
 
 	//Date Click

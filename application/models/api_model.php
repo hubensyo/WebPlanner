@@ -54,10 +54,26 @@ class api_model extends CI_Model
         return $query->row_array();
     }
 
-    function checkAccount($stdnum, $SY, $sem){
+    function checkEnrolled($stdnum, $SY, $sem){
         $result = $this->db->query('SELECT * FROM fees_enrolled_college AS a WHERE a.Reference_Number = (SELECT Reference_Number FROM student_info WHERE Student_Number = ' . $this->db->escape($stdnum) . ') AND a.schoolyear = ' . $this->db->escape($SY) . ' AND a.semester = ' . $this->db->escape($sem));
         if(!empty($result->row_array())){
             return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function checkAccount($stdnum){
+        $this->db->where('student_number', $stdnum);
+        $query = $this->db->get('dominicanplanner_account');
+        if(!empty($query->row_array())){
+            if($query->row_array()['valid'] == '1'){
+                return true;
+            }
+            if($query->row_array()['valid'] == '0'){
+                return "not enrolled";
+            }
         }
         else{
             return false;
@@ -94,5 +110,35 @@ class api_model extends CI_Model
         AND b.School_Year = ' . $this->db->escape($SY) . ' AND b.Semester = ' . $this->db->escape($sem) . '  AND b.Dropped = 0 AND b.Cancelled = 0 AND b.Charged = 0
         ');
         return $result->row_array();
+    }
+
+    function addAccount($data){
+        $this->db->insert('dominicanplanner_account', $data);
+        $this->db->trans_complete();
+        // was there any update or error?
+        if ($this->db->affected_rows() == '1') {
+            return true;
+        } else {
+            // any trans error?
+            if ($this->db->trans_status() === FALSE) {
+                return false;
+            }
+            return false;
+        }
+    }
+
+    function updateAccount($stdnum, $data){
+        $this->db->where('student_number', $stdnum);
+        $this->db->update('dominicanplanner_account', $data);
+        // was there any update or error?
+        if ($this->db->affected_rows() == '1') {
+            return true;
+        } else {
+            // any trans error?
+            if ($this->db->trans_status() === FALSE) {
+                return false;
+            }
+            return false;
+        }
     }
 }

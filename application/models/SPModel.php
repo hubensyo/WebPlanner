@@ -96,7 +96,7 @@ class SPModel extends CI_Model
     }
 
     //fetching Date
-    function getTodo()
+    function getEvents()
     {
         $this->db->where('valid', 1);
         $query = $this->db->get('dominicanplanner_calendar');
