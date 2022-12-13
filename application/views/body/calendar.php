@@ -189,7 +189,6 @@
             background-color: #9a1a21;
             border-color: #000;
         }
-
     </style>
 
 </head>
@@ -346,6 +345,12 @@
                     initialView: 'dayGridMonth',
                     themeSystem: 'bootstrap5',
                     allDay: 'false',
+                    allDaySlot: false,
+                    initialView: 'dayGridMonth',
+                    validRange: {
+                        start: '2022-08-14',
+                        end: '2023-07-24',
+                    },
                     headerToolbar: {
                         left: 'prev,next today',
                         center: 'title',

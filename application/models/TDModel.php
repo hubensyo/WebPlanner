@@ -2,10 +2,8 @@
 class TDModel extends CI_Model
 {
 
-    function fetch_all($stdnum)
+    function fetch_all()
     {
-        $this->db->where('valid', 1);
-        $this->db->where('student_number', $stdnum);
         $this->db->order_by('id', 'DESC');
         return $this->db->get('dominicanplanner_todo');
     }
@@ -13,8 +11,8 @@ class TDModel extends CI_Model
     function task($stdnum){
         $this->db->where('student_number', $stdnum);
         $this->db->order_by('id', 'DESC');
-        $query = $this->db->get('dominicanplanner_todo');
-        return $query->result_array();
+        return $this->db->get('dominicanplanner_todo');
+        // return $query->result_array();
     }
 
     function edit($task_id){
@@ -42,7 +40,7 @@ class TDModel extends CI_Model
         $this->db->update("dominicanplanner_todo", $data);
     }
 
-    function delete_single_task($task_id)
+    function delete_single_user($task_id)
     {
         $this->db->where("id", $task_id);
         $this->db->delete("dominicanplanner_todo");
