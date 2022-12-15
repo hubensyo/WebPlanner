@@ -22,9 +22,7 @@
                                             <br>
                                             <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="last_name" placeholder="Last Name" required></div>
                                             <br>
-                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="program" placeholder="Program" required></div>
-                                            <br>
-                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="email" placeholder="Email" required></div>
+                                            <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="course" placeholder="Course" required></div>
                                             <br>
                                             <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="password" placeholder="Password" required></div>
 
@@ -48,8 +46,7 @@
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
-                            <th>Program</th>
-                            <th>Email</th>
+                            <th>Course</th>
                             <th>Password</th>
                             <th>To-Do List</th>
                             <th>Edit</th>
@@ -65,8 +62,7 @@
                                 <td class="border-bottom"><?= $list['first_name']  ?></td>
                                 <td class="border-bottom"><?= $list['middle_name']  ?></td>
                                 <td class="border-bottom"><?= $list['last_name']  ?></td>
-                                <td class="border-bottom"><?= $list['program']  ?></td>
-                                <td class="border-bottom"><?= $list['email']  ?></td>
+                                <td class="border-bottom"><?= $list['course']  ?></td>
                                 <td class="border-bottom"><?= $list['password']  ?></td>
 
                                 <!-- view to-do section -->
@@ -95,20 +91,17 @@
                                                         <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="student_number" placeholder="Student No." value="<?= $list['student_number'] ?>" required></div>
 
                                                         <div style="color: black">First Name</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="first_name" placeholder="Name" value="<?= $list['first_name'] ?>" required></div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="first_name" placeholder="First Name" value="<?= $list['first_name'] ?>" required></div>
 
                                                         <div style="color: black">Middle Name</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="middle_name" placeholder="Name" value="<?= $list['middle_name'] ?>" required></div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="middle_name" placeholder="Middle Name" value="<?= $list['middle_name'] ?>" required></div>
 
                                                         <div style="color: black">Last Name</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="last_name" placeholder="Name" value="<?= $list['last_name'] ?>" required></div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="last_name" placeholder="Last Name" value="<?= $list['last_name'] ?>" required></div>
 
-                                                        <div style="color: black">Program</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="program" placeholder="Program" value="<?= $list['program'] ?>" required></div>
-
-                                                        <div style="color: black">Email</div>
-                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="email" placeholder="Email" value="<?= $list['email'] ?>" required></div>
-
+                                                        <div style="color: black">Course</div>
+                                                        <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="course" placeholder="Course" value="<?= $list['course'] ?>" required></div>
+                                       
                                                         <div style="color: black">Password</div>
                                                         <div class="col-md-12 form-group"><input type="text" style="color: black; font-size: 15px; background-color:gainsboro;" id="color" class="form-control" name="password" placeholder="Password" value="<?= $list['password'] ?>" required></div>
                                                         <div class="modal-footer">

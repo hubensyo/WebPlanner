@@ -43,9 +43,10 @@
         th,
         thead,
         tr {
-            border-color: #ededed !important;
+            border-color: #000 !important;
             border-style: solid;
             border-width: 1px !important;
+
         }
 
         .fc-daygrid-day:hover {

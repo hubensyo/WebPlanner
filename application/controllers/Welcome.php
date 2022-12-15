@@ -49,8 +49,7 @@ class Welcome extends CI_Controller
 		$data['first_name'] = $this->input->post('first_name');
 		$data['middle_name'] = $this->input->post('middle_name');
 		$data['last_name'] = $this->input->post('last_name');
-		$data['program'] = $this->input->post('program');
-		$data['email'] = $this->input->post('email');
+		$data['course'] = $this->input->post('course');
 		$data['password'] = $this->input->post('password');
 		$this->SPModel->edit_students($student_number, $data);
 		// print_r($data);
@@ -64,8 +63,7 @@ class Welcome extends CI_Controller
 		$data['first_name'] = $this->input->post('first_name');
 		$data['middle_name'] = $this->input->post('middle_name');
 		$data['last_name'] = $this->input->post('last_name');
-		$data['program'] = $this->input->post('program');
-		$data['email'] = $this->input->post('email');
+		$data['course'] = $this->input->post('course');
 		$data['password'] = $this->input->post('password');
 		$data['valid'] = 1;
 		$this->SPModel->insert_students($data);
