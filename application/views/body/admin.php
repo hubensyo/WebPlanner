@@ -65,9 +65,11 @@
                             <td class="border-bottom"><?= $list['program']  ?></td>
                             <td class="border-bottom"><?= $list['email']  ?></td>
                             <td class="border-bottom"><?= $list['password']  ?></td>
-                            <td class="border-bottom"><?= $list['position']  ?></td>
-
-
+                            <td class="border-bottom"><?php if ($list['position'] == "1") {
+                                                            echo 'Instructor';
+                                                        } elseif ($list['position'] == "2") {
+                                                            echo 'Admin';
+                                                        } ?></td>
 
 
                             <!-- edit section -->

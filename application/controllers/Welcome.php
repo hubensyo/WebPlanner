@@ -213,7 +213,7 @@ class Welcome extends CI_Controller
 			'valid' => 0
 		);
 		$this->SPModel->edit_todo($name, $data);
-		redirect('welcome/todo');
+		redirect('welcome/todo_all');
 	}
 
 

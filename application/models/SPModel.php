@@ -27,7 +27,7 @@ class SPModel extends CI_Model
 
     function edit_todo($id, $data)
     {
-        $this->db->where('id', $id);
+        $this->db->where('task_id', $id);
         $this->db->update('dominicanplanner_todo', $data);
     }
 

@@ -11,7 +11,7 @@
         <ul class="navbar-nav">
 
             <li class="nav-item">
-                <a class="nav-link text-white" href="http://10.0.3.36/tims/index.php/welcome/calendar" id="calendar_side" onclick="clicksidenav(this.id)">
+                <a class="nav-link text-white" href=<?php echo base_url("/index.php/welcome/calendar") ?> id="calendar_side" onclick="clicksidenav(this.id)">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">calendar_today</i>
                     </div>
@@ -20,7 +20,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white active" href="http://10.0.3.36/tims/index.php/welcome/student_dashboard" id="studentlist_side" onclick="clicksidenav(this.id)">
+                <a class="nav-link text-white active" href=<?php echo base_url("/index.php/welcome/student_dashboard") ?> id="studentlist_side" onclick="clicksidenav(this.id)">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -29,7 +29,7 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link text-white" href="http://10.0.3.36/tims/index.php/welcome/todo_all" id="todo_side" onclick="clicksidenav(this.id)">
+                <a class="nav-link text-white" href=<?php echo base_url("/index.php/welcome/todo_all") ?> id="todo_side" onclick="clicksidenav(this.id)">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">check</i>
                     </div>
@@ -46,7 +46,7 @@
             if (($this->session->userdata('login')['position']) == "2") {
             ?>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="http://10.0.3.36/tims/index.php/welcome/admin" id="admin_side" onclick="clicksidenav(this.id)">
+                    <a class="nav-link text-white" href=<?php echo base_url("/index.php/welcome/admin") ?> id="admin_side" onclick="clicksidenav(this.id)">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>

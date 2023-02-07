@@ -358,6 +358,7 @@
                         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                     },
                     events: this.event,
+
                     eventTimeFormat: {
                         hour: '2-digit',
                         minute: '2-digit',
@@ -534,6 +535,34 @@
         });
 
         clickcalendar()
+
+        $(document).ready(function() {
+
+            // var dtToday = new Date();
+
+            // var month = dtToday.getMonth() + 1;
+            // var day = dtToday.getDate();
+            // var year = dtToday.getFullYear();
+            // if (month < 10)
+            //     month = '0' + month.toString();
+            // if (day < 10)
+            //     day = '0' + day.toString();
+
+            // var maxDate = year + '-' + month + '-' + day;
+
+            // $($eventStart).attr('min', maxDate);
+
+            // var today = new Date().toISOString().split('T')[+1];
+            // document.getElementsByName("date_start")[0].setAttribute('min', today);
+
+            var today = new Date().toISOString().slice(0, 16);
+
+            document.getElementsByName("date_start")[0].min = today;
+            document.getElementsByName("date_finish")[0].min = today;
+
+
+
+        });
     </script>
 
 </body>

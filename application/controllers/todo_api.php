@@ -66,7 +66,7 @@ class todo_api extends CI_Controller
             'due_time'     =>  $this->input->post('due_time')
         );
 
-        $task_id = $this->input->post('id');
+        $task_id = $this->input->post('task_id');
         $stdnum = $this->input->post('student_number');
 
         $this->TDModel->update_api($task_id, $stdnum, $data);
@@ -78,8 +78,8 @@ class todo_api extends CI_Controller
 
     function fetch_single()
     {
-        if ($this->input->post('id')) {
-            $data = $this->TDModel->fetch_single_user($this->input->post('id'));
+        if ($this->input->post('task_id')) {
+            $data = $this->TDModel->fetch_single_user($this->input->post('task_id'));
             foreach ($data as $row) {
                 $output['task'] = $row['task'];
                 $output['student_number'] = $row['student_number'];
@@ -93,7 +93,7 @@ class todo_api extends CI_Controller
     }
 
     function fetch_item(){
-        $task_id = $this->input->post('id');
+        $task_id = $this->input->post('task_id');
         $data = $this->TDModel->edit($task_id);
 
         if (isset($task_id)){
@@ -114,8 +114,8 @@ class todo_api extends CI_Controller
 
     function delete()
     {
-        if ($this->input->post('id')) {
-            if ($this->TDModel->delete_single_user($this->input->post('id'))) {
+        if ($this->input->post('task_id')) {
+            if ($this->TDModel->delete_single_user($this->input->post('task_id'))) {
                 $array = array(
                     'success' => true
                 );
